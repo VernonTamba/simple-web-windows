@@ -10,13 +10,60 @@
 }
 
 .wallpaper {
+  position: relative;
   height: 92%;
+  background-image: url("https://wallpapercave.com/wp/wp7283040.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
 }
 
-.wallpaper img {
+.wallpaper__icon {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+  cursor: pointer;
+  margin-left: 2em;
+  transition: all 0.3s ease-in-out;
+  padding-bottom: 5px;
+}
+
+.wallpaper__icon:hover {
+  transform: translateX(10px);
+}
+
+.appPreview {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  height: 60vh;
+  width: 80%;
+  text-align: center;
+}
+
+.appPreview__header {
+  background: #212121;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+
+.appPreview__image {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  border-radius: 5px;
+  background-image: url("https://www.windowslatest.com/wp-content/uploads/2021/06/Windows-11-Start-Menu-light-mode.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .taskbar {
@@ -77,4 +124,5 @@
 .taskbar__icon-small:hover {
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2.5px);
 }

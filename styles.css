@@ -15,6 +15,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 2rem;
 }
 
 .container__top {
@@ -23,7 +24,7 @@
   align-items: center;
   gap: 1.5rem;
   padding-inline: 30px;
-  background-color: rgba(191, 212, 239, 0.2);
+  background-color: rgba(191, 212, 239, 0.4);
   border-radius: 10px;
 }
 
@@ -51,6 +52,24 @@
   padding-left: 1em;
 }
 
+.container__datetime p {
+  font-size: 1.2rem;
+}
+
 .container__bottom {
-  float: left;
+}
+
+.container__bottom a {
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: rgba(191, 212, 239);
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: all 0.1s ease-in;
+}
+
+.container__bottom a:hover {
+  padding: 13px 23px;
+  background-color: rgba(191, 212, 239, 0.7);
+  color: rgba(0, 0, 0);
 }

@@ -7,6 +7,7 @@
 
 .container {
   height: 100vh;
+  overflow: hidden;
 }
 
 .wallpaper {
@@ -33,22 +34,37 @@
   padding-bottom: 5px;
 }
 
+.wallpaper__icon--animate {
+  margin-left: 10em;
+}
+
 .wallpaper__icon:hover {
   transform: translateX(10px);
 }
 
 .appPreview {
+  /* display: none; */
   position: absolute;
   top: 20%;
   left: 50%;
   transform: translate(-50%, -10%);
   height: 60vh;
-  width: 80%;
+  /* TODO: Fix the width for the preview */
+  width: 50%;
   text-align: center;
+  top: 120%;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.appPreview--display {
+  display: block;
+  top: 20%;
 }
 
 .appPreview__header {
   background: #212121;
+  margin-inline: auto;
   padding: 10px 20px;
   color: #fff;
   border-radius: 5px;
@@ -59,11 +75,13 @@
 .appPreview__image {
   height: 100%;
   width: 100%;
-  border-radius: 5px;
+  margin: 0 auto;
+  border-radius: 10px;
   background-image: url("https://www.windowslatest.com/wp-content/uploads/2021/06/Windows-11-Start-Menu-light-mode.jpg");
   background-size: contain;
-  background-position: center;
+  /* background-position: top center; */
   background-repeat: no-repeat;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .taskbar {
@@ -118,6 +136,12 @@
   background: none;
   transition: all 0.5s ease;
   padding: 7px;
+}
+
+.taskbar__icon--active {
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2.5px);
 }
 
 .taskbar__icon:hover,

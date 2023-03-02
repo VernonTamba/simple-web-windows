@@ -73,3 +73,7 @@
   background-color: rgba(191, 212, 239, 0.7);
   color: rgba(0, 0, 0);
 }
+
+.dateHome {
+  display: none;
+}

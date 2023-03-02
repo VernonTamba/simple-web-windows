@@ -39,26 +39,22 @@
 }
 
 .wallpaper__icon:hover {
-  transform: translateX(10px);
+  transform: translateX(5px);
 }
 
 .appPreview {
-  /* display: none; */
   position: absolute;
-  top: 20%;
+  top: 160%;
   left: 50%;
-  transform: translate(-50%, -10%);
-  height: 60vh;
-  /* TODO: Fix the width for the preview */
-  width: 50%;
+  transform: translate(-50%, -20%);
+  height: 65vh;
+  width: 55%;
   text-align: center;
-  top: 120%;
   transition: all 0.3s ease;
   z-index: 100;
 }
 
 .appPreview--display {
-  display: block;
   top: 20%;
 }
 
@@ -74,13 +70,10 @@
 
 .appPreview__image {
   height: 100%;
-  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
   margin: 0 auto;
   border-radius: 10px;
-  background-image: url("https://www.windowslatest.com/wp-content/uploads/2021/06/Windows-11-Start-Menu-light-mode.jpg");
-  background-size: contain;
-  /* background-position: top center; */
-  background-repeat: no-repeat;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 

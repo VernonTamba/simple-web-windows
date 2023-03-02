@@ -1,8 +1,8 @@
 // DATE AND TIME CONFIGURATION
 let today = new Date();
-const wallpaperIcons = document.querySelectorAll(".wallpaper__icon");
 const time = document.querySelector(".time");
-const date = document.querySelector(".date");
+const dateHome = document.querySelector(".dateHome");
+const dateIndex = document.querySelector(".dateIndex");
 // const dateMonthName = document.querySelector(".dateMonthName");
 const taskbarIcon = document.querySelectorAll(".taskbar__icon");
 const appPreview = document.querySelector(".appPreview");
@@ -28,10 +28,19 @@ setInterval(function () {
   let currentDate = `${
     months[today.getUTCMonth()]
   } ${today.getUTCDate()}, ${today.getUTCFullYear()}`;
-  let currentDateHome = `${today.getUTCDate()}/${today.getUTCMonth()}/${today.getUTCFullYear()}`;
+  let currentDateHome__day =
+    today.getUTCDate().toString.length === 1
+      ? `0${today.getUTCDate()}`
+      : today.getUTCDate();
+  let currentDateHome__month =
+    today.getUTCMonth().toString.length === 1
+      ? `0${today.getUTCMonth() + 1}`
+      : today.getUTCMonth() + 1;
+  let currentDateHome = `${currentDateHome__day}/${currentDateHome__month}/${today.getUTCFullYear()}`;
   let currentTime = `${today.getHours()}:${today.getMinutes()}`;
   time.textContent = currentTime;
-  date.textContent = currentDateHome;
+  dateHome.textContent = currentDateHome;
+  dateIndex.textContent = currentDate;
 }, 1000);
 
 taskbarIcon.forEach((icon) => {
@@ -39,8 +48,7 @@ taskbarIcon.forEach((icon) => {
     iconsClicked.push(icon);
     if (
       appPreview.classList.contains("appPreview--display") &&
-      appPreviewImage.style.backgroundImage ===
-        `url("./img/preview/${icon.alt}.jpg")`
+      appPreviewImage.getAttribute("src") === `./img/preview/${icon.alt}.jpg`
     ) {
       appPreview.classList.remove("appPreview--display");
       icon.classList.remove("taskbar__icon--active");
@@ -55,6 +63,8 @@ taskbarIcon.forEach((icon) => {
       icon.classList.add("taskbar__icon--active");
     }
     appPreviewHeader.textContent = icon.alt;
-    appPreviewImage.style.backgroundImage = `url("./img/preview/${icon.alt}.jpg")`;
+    appPreviewImage.src = `./img/preview/${icon.alt}.jpg`;
   });
 });
+
+// TODO: Add Page Transition!

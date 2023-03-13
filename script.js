@@ -1,9 +1,12 @@
 // DATE AND TIME CONFIGURATION
 let today = new Date();
+// index.html elements
+const topContainer = document.querySelector(".container__top");
+const bottomContainer = document.querySelector(".container__bottom");
+// home.html elements
 const time = document.querySelector(".time");
 const dateHome = document.querySelector(".dateHome");
 const dateIndex = document.querySelector(".dateIndex");
-// const dateMonthName = document.querySelector(".dateMonthName");
 const taskbarIcon = document.querySelectorAll(".taskbar__icon");
 const appPreview = document.querySelector(".appPreview");
 const appPreviewImage = document.querySelector(".appPreview__image");
@@ -24,25 +27,35 @@ const months = [
 ];
 let iconsClicked = [];
 
+// Set the current date and time
 setInterval(function () {
   let currentDate = `${
     months[today.getUTCMonth()]
   } ${today.getUTCDate()}, ${today.getUTCFullYear()}`;
   let currentDateHome__day =
-    today.getUTCDate().toString.length === 1
+    today.getUTCDate().toString().length === 1
       ? `0${today.getUTCDate()}`
       : today.getUTCDate();
   let currentDateHome__month =
-    today.getUTCMonth().toString.length === 1
+    today.getUTCMonth().toString().length === 1
       ? `0${today.getUTCMonth() + 1}`
       : today.getUTCMonth() + 1;
+  let currentHours =
+    today.getHours().toString().length === 1
+      ? `0${today.getHours()}`
+      : today.getHours();
+  let currentMinutes =
+    today.getMinutes().toString().length === 1
+      ? `0${today.getMinutes()}`
+      : today.getMinutes();
   let currentDateHome = `${currentDateHome__day}/${currentDateHome__month}/${today.getUTCFullYear()}`;
-  let currentTime = `${today.getHours()}:${today.getMinutes()}`;
+  let currentTime = `${currentHours}:${currentMinutes}`;
   time.textContent = currentTime;
   dateHome.textContent = currentDateHome;
   dateIndex.textContent = currentDate;
 }, 1000);
 
+// Behavior of the taskbar icons when they are clicked
 taskbarIcon.forEach((icon) => {
   icon.addEventListener("click", () => {
     iconsClicked.push(icon);
@@ -67,4 +80,24 @@ taskbarIcon.forEach((icon) => {
   });
 });
 
-// TODO: Add Page Transition!
+// GSAP for selected elements
+const timeline = gsap.timeline();
+
+gsap.from(topContainer, {
+  duration: 1.25,
+  y: "30%",
+});
+gsap.from(bottomContainer, {
+  duration: 1.25,
+  y: "90%",
+});
+// gsap.fromTo(
+//   taskbarIcon,
+//   { y: -20 },
+//   { duration: 1, y: 0, ease: "power2.inOut" }
+// );
+taskbarIcon.forEach((icon, index) => {
+  timeline.fromTo(icon, { y: -20 }, { duration: 0.25, y: 0 }), { delay: index };
+});
+
+// TODO: The bouncy thingy is not yet nice. Learn more about GSAP! And try to see add() and other stuff in the docs!

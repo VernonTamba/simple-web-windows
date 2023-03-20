@@ -80,9 +80,43 @@ taskbarIcon.forEach((icon) => {
   });
 });
 
+// Behavior of the taskbar icons when they are clicked (GSAP)
+// taskbarIcon.forEach((icon) => {
+//   icon.addEventListener("click", () => {
+//     iconsClicked.push(icon);
+//     if (
+//       appPreview.classList.contains("appPreview--display") &&
+//       appPreviewImage.getAttribute("src") === `./img/preview/${icon.alt}.jpg`
+//     ) {
+//       // appPreview.classList.remove("appPreview--display");
+//       icon.classList.remove("taskbar__icon--active");
+//       gsap.To(appPreview, {
+//         y: 0,
+//         duration: 5,
+//       });
+//       iconsClicked = [];
+//     } else {
+//       if (iconsClicked.length > 1) {
+//         icon.classList.remove("taskbar__icon--active");
+//         iconsClicked[0].classList.remove("taskbar__icon--active");
+//         iconsClicked.splice(0, 1);
+//       }
+//       // appPreview.classList.add("appPreview--display");
+//       gsap.To(appPreview, {
+//         y: 100,
+//         duration: 5,
+//       });
+//       icon.classList.add("taskbar__icon--active");
+//     }
+//     appPreviewHeader.textContent = icon.alt;
+//     appPreviewImage.src = `./img/preview/${icon.alt}.jpg`;
+//   });
+// });
+
 // GSAP for selected elements
 const timeline = gsap.timeline();
 
+// Landing Page Screen: Floating Up Containers
 gsap.from(topContainer, {
   duration: 1.25,
   y: "30%",
@@ -91,13 +125,17 @@ gsap.from(bottomContainer, {
   duration: 1.25,
   y: "90%",
 });
-// gsap.fromTo(
-//   taskbarIcon,
-//   { y: -20 },
-//   { duration: 1, y: 0, ease: "power2.inOut" }
-// );
-taskbarIcon.forEach((icon, index) => {
-  timeline.fromTo(icon, { y: -20 }, { duration: 0.25, y: 0 }), { delay: index };
+
+// Home Page Screen: Floating Down Taskbar Icons
+taskbarIcon.forEach((icon) => {
+  timeline.fromTo(
+    icon,
+    { y: -60 },
+    { duration: 0.1, y: 0, ease: "circ.out", delay: 0.05 }
+  );
 });
 
-// TODO: The bouncy thingy is not yet nice. Learn more about GSAP! And try to see add() and other stuff in the docs!
+// TODO: Try to use GSAP for the animation/transition of the app preview
+// TODO: Learn more about GSAP! And try to see add() and other stuff in the docs!
+// TODO: Add responsive design
+// TODO: Add page transition?

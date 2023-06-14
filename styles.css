@@ -251,3 +251,27 @@ body {
 .dateHome {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .container__top {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .container__datetime {
+    height: 50px;
+    border: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .container__logo h1 {
+    text-align: center;
+    font-size: 2.5rem;
+  }
+
+  .container__logo img {
+    height: 60px;
+    width: 60px;
+  }
+}

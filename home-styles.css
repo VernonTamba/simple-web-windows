@@ -96,6 +96,7 @@ svg {
 }
 
 .taskbar {
+  position: relative;
   height: 8%;
   background-color: #212121;
   display: flex;
@@ -108,6 +109,28 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.taskbar__middle-button {
+  border: none;
+  background: transparent;
+  margin-inline: 5px;
+  position: absolute;
+  cursor: pointer;
+  display: none;
+}
+
+.taskbar__middle-button.previous {
+  left: 30%;
+}
+
+.taskbar__middle-button.next {
+  right: 44%;
+}
+
+.taskbar__middle-button > img {
+  width: 20px;
+  height: 20px;
 }
 
 .taskbar__right {
@@ -160,4 +183,23 @@ svg {
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.25);
   transform: translateY(-2.5px);
+}
+
+@media (max-width: 880px) {
+  .taskbar__middle-button.previous {
+    left: 25%;
+  }
+
+  .taskbar__middle-button.next {
+    right: 39%;
+  }
+}
+
+@media (max-width: 680px) {
+  .taskbar__middle-button.next {
+    right: 31%;
+  }
+  .taskbar__icon-small {
+    display: none;
+  }
 }
